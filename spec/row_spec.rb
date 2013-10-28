@@ -15,12 +15,12 @@ describe ICharger::Log::Row do
     its(:cell_count) { should eql(6) }
 
     it 'should have known cell voltages' do
-      expect(subject.cell(0)).to be_within(0.1).of(3.79)
-      expect(subject.cell(1)).to be_within(0.1).of(3.79)
-      expect(subject.cell(2)).to be_within(0.1).of(3.79)
-      expect(subject.cell(3)).to be_within(0.1).of(3.79)
-      expect(subject.cell(4)).to be_within(0.1).of(3.79)
-      expect(subject.cell(5)).to be_within(0.1).of(3.79)
+      expect(subject.cell(0)).to be_within(0.01).of(3.79)
+      expect(subject.cell(1)).to be_within(0.01).of(3.79)
+      expect(subject.cell(2)).to be_within(0.01).of(3.79)
+      expect(subject.cell(3)).to be_within(0.01).of(3.79)
+      expect(subject.cell(4)).to be_within(0.01).of(3.79)
+      expect(subject.cell(5)).to be_within(0.01).of(3.79)
     end
 
     its(:checksum) { should eql(50) }
@@ -37,6 +37,15 @@ describe ICharger::Log::Row do
 
     its(:cell_count) { should eql(6) }
 
+    it 'should have known cell voltages' do
+      expect(subject.cell(0)).to be_within(0.01).of(3.81)
+      expect(subject.cell(1)).to be_within(0.01).of(3.80)
+      expect(subject.cell(2)).to be_within(0.01).of(3.81)
+      expect(subject.cell(3)).to be_within(0.01).of(3.81)
+      expect(subject.cell(4)).to be_within(0.01).of(3.80)
+      expect(subject.cell(5)).to be_within(0.01).of(3.81)
+    end
+
   end
 
   context 'channel 1, 10 cells' do
@@ -49,6 +58,19 @@ describe ICharger::Log::Row do
 
     its(:cell_count) { should eql(10) }
 
+    it 'should have known cell voltages' do
+      expect(subject.cell(0)).to be_within(0.01).of(3.81)
+      expect(subject.cell(1)).to be_within(0.01).of(3.80)
+      expect(subject.cell(2)).to be_within(0.01).of(3.81)
+      expect(subject.cell(3)).to be_within(0.01).of(3.81)
+      expect(subject.cell(4)).to be_within(0.01).of(3.80)
+      expect(subject.cell(5)).to be_within(0.01).of(3.81)
+      expect(subject.cell(6)).to be_within(0.01).of(3.81)
+      expect(subject.cell(7)).to be_within(0.01).of(3.81)
+      expect(subject.cell(8)).to be_within(0.01).of(3.80)
+      expect(subject.cell(9)).to be_within(0.01).of(3.81)
+    end
+
   end
 
   context 'channel 2, 2 cells' do
@@ -60,6 +82,11 @@ describe ICharger::Log::Row do
     its(:current) { should be_within(0.1).of(4.02) }
 
     its(:cell_count) { should eql(2) }
+
+    it 'should have known cell voltages' do
+      expect(subject.cell(0)).to be_within(0.01).of(3.81)
+      expect(subject.cell(1)).to be_within(0.01).of(3.81)
+    end
 
   end
 
