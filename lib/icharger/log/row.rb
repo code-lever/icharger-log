@@ -52,12 +52,12 @@ module ICharger
         @fields[8]
       end
 
-      # XXX something cell voltage related
+      # XXX internal temperature / 10.0?
       def field9
         @fields[9]
       end
 
-      # XXX always seems to be 0
+      # XXX always seems to be 0, external temp. sensor?
       def field10
         @fields[10]
       end
