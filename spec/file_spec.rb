@@ -10,6 +10,8 @@ describe ICharger::Log::File do
 
     its(:channel) { should eql(1) }
 
+    its(:duration) { should be_within(0.1).of(44.6) }
+
   end
 
   context 'data file LiPo[Storage_953_CH2].txt' do
@@ -20,7 +22,7 @@ describe ICharger::Log::File do
 
     its(:channel) { should eql(2) }
 
-    its(:duration) { should be_within(1.0).of(62.0) }
+    its(:duration) { should be_within(0.1).of(62.8) }
 
   end
 
