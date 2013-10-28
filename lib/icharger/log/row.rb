@@ -12,8 +12,28 @@ module ICharger
         /(?<ch>\d)/.match(@fields[0])[:ch].to_i
       end
 
+      # XXX state of some kind?
+      def field1
+        @fields[1]
+      end
+
       def time
         @fields[2].to_i
+      end
+
+      # XXX always seems to be 1
+      def field3
+
+      end
+
+      # XXX always seems to be 0
+      def field4
+
+      end
+
+      # XXX VERIFY
+      def current
+        @fields[5].to_i / 100.0
       end
 
       def cell(index)
