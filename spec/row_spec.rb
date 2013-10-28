@@ -23,8 +23,6 @@ describe ICharger::Log::Row do
       expect(subject.cell(5)).to be_within(0.01).of(3.79)
     end
 
-    its(:checksum) { should eql(50) }
-
   end
 
   context 'channel 2, 6 cells' do

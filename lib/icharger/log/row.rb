@@ -70,7 +70,7 @@ module ICharger
         @fields[11..20].reject{ |v| v.to_i == 0 }.length
       end
 
-      def checksum
+      def field21
         @fields[21].to_i
       end
 
