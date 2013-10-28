@@ -1,4 +1,4 @@
-# Icharger::Log
+# ICharger::Log [![Build Status](https://travis-ci.org/code-lever/icharger-log.png)](https://travis-ci.org/code-lever/icharger-log) [![Dependency Status](https://gemnasium.com/code-lever/icharger-log.png)](https://gemnasium.com/code-lever/icharger-log) [![Code Climate](https://codeclimate.com/github/code-lever/icharger-log.png)](https://codeclimate.com/github/code-lever/icharger-log)
 
 TODO: Write a gem description
 
