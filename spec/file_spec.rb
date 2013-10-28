@@ -8,6 +8,8 @@ describe ICharger::Log::File do
 
     subject { @file }
 
+    it { should have(447).rows }
+
     its(:channel) { should eql(1) }
 
     its(:duration) { should be_within(0.1).of(44.6) }
@@ -19,6 +21,8 @@ describe ICharger::Log::File do
     before(:all) { @file = ICharger::Log::File.new(data_file('LiPo[Storage_953_CH2].txt')) }
 
     subject { @file }
+
+    it { should have(629).rows }
 
     its(:channel) { should eql(2) }
 
