@@ -58,7 +58,7 @@ module ICharger
 
       # Capacity stored or removed so far, in amp-hours.
       #
-      # @return amp-hours stored (+) or removed (-)
+      # @return [Float] amp-hours stored (+) or removed (-)
       def capacity
         @fields[8].to_i / 100.0
       end
@@ -66,23 +66,22 @@ module ICharger
       # Internal temperature sensor value, in celsius or fahrenheit.
       #
       # @param unit :c or :f for celsius or fahrenheit
-      # @return [Float]
+      # @return [Float] temperature
       def internal_temperature(unit = :c)
-        @temperature ||= @fields[9].to_i
-        case unit
-        when :f
-          (@temperature * (9.0 / 5.0)) + 32
-        else
-          @temperature
-        end
+        @internal_temperature ||= (@fields[9].to_i / 10.0)
+        convert_temperature(@internal_temperature, unit)
       end
 
-      # XXX always seems to be 0, external temp. sensor?
+      # External temperature sensor value, in celsius or fahrenheit.
+      #
+      # @param unit :c or :f for celsius or fahrenheit
+      # @return [Float] temperature
       def field10
-        @fields[10]
+        @external_temperature ||= (@fields[10].to_i / 10.0)
+        convert_temperature(@external_temperature, unit)
       end
 
-      def cell(index)
+      def cell_voltage(index)
         @fields[11 + index].to_i / 1000.0
       end
 
@@ -95,6 +94,15 @@ module ICharger
       end
 
       private
+
+      def convert_temperature(celsius, unit)
+        case unit
+        when :f
+          (celsius * (9.0 / 5.0)) + 32
+        else
+          celsius
+        end
+      end
 
     end
 

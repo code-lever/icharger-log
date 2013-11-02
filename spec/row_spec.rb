@@ -6,7 +6,7 @@ describe ICharger::Log::Row do
 
   context 'channel 1, 6 cells' do
 
-    let(:data) { '$1;1;18000;1;0;-53;23746;22752;1;380;0;3795;3793;3798;3795;3793;3789;0;0;0;0;50' }
+    let(:data) { '$1;1;18000;1;0;-53;23746;22752;1;391;0;3795;3793;3798;3795;3793;3789;0;0;0;0;50' }
 
     its(:channel) { should eql(1) }
 
@@ -18,15 +18,20 @@ describe ICharger::Log::Row do
 
     its(:capacity) { should be_within(0.1).of(0.1) }
 
+    it 'should have internal temperatures' do
+      expect(subject.internal_temperature(:c)).to be_within(0.1).of(39.1)
+      expect(subject.internal_temperature(:f)).to be_within(0.1).of(102.4)
+    end
+
     its(:cell_count) { should eql(6) }
 
     it 'should have known cell voltages' do
-      expect(subject.cell(0)).to be_within(0.01).of(3.79)
-      expect(subject.cell(1)).to be_within(0.01).of(3.79)
-      expect(subject.cell(2)).to be_within(0.01).of(3.79)
-      expect(subject.cell(3)).to be_within(0.01).of(3.79)
-      expect(subject.cell(4)).to be_within(0.01).of(3.79)
-      expect(subject.cell(5)).to be_within(0.01).of(3.79)
+      expect(subject.cell_voltage(0)).to be_within(0.01).of(3.79)
+      expect(subject.cell_voltage(1)).to be_within(0.01).of(3.79)
+      expect(subject.cell_voltage(2)).to be_within(0.01).of(3.79)
+      expect(subject.cell_voltage(3)).to be_within(0.01).of(3.79)
+      expect(subject.cell_voltage(4)).to be_within(0.01).of(3.79)
+      expect(subject.cell_voltage(5)).to be_within(0.01).of(3.79)
     end
 
   end
@@ -45,15 +50,20 @@ describe ICharger::Log::Row do
 
     its(:capacity) { should be_within(0.1).of(0.0) }
 
+    it 'should have internal temperatures' do
+      expect(subject.internal_temperature(:c)).to be_within(0.1).of(38.0)
+      expect(subject.internal_temperature(:f)).to be_within(0.1).of(100.4)
+    end
+
     its(:cell_count) { should eql(6) }
 
     it 'should have known cell voltages' do
-      expect(subject.cell(0)).to be_within(0.01).of(3.81)
-      expect(subject.cell(1)).to be_within(0.01).of(3.80)
-      expect(subject.cell(2)).to be_within(0.01).of(3.81)
-      expect(subject.cell(3)).to be_within(0.01).of(3.81)
-      expect(subject.cell(4)).to be_within(0.01).of(3.80)
-      expect(subject.cell(5)).to be_within(0.01).of(3.81)
+      expect(subject.cell_voltage(0)).to be_within(0.01).of(3.81)
+      expect(subject.cell_voltage(1)).to be_within(0.01).of(3.80)
+      expect(subject.cell_voltage(2)).to be_within(0.01).of(3.81)
+      expect(subject.cell_voltage(3)).to be_within(0.01).of(3.81)
+      expect(subject.cell_voltage(4)).to be_within(0.01).of(3.80)
+      expect(subject.cell_voltage(5)).to be_within(0.01).of(3.81)
     end
 
   end
@@ -72,19 +82,24 @@ describe ICharger::Log::Row do
 
     its(:capacity) { should be_within(0.1).of(-6.01) }
 
+    it 'should have internal temperatures' do
+      expect(subject.internal_temperature(:c)).to be_within(0.1).of(38.0)
+      expect(subject.internal_temperature(:f)).to be_within(0.1).of(100.4)
+    end
+
     its(:cell_count) { should eql(10) }
 
     it 'should have known cell voltages' do
-      expect(subject.cell(0)).to be_within(0.01).of(3.81)
-      expect(subject.cell(1)).to be_within(0.01).of(3.80)
-      expect(subject.cell(2)).to be_within(0.01).of(3.81)
-      expect(subject.cell(3)).to be_within(0.01).of(3.81)
-      expect(subject.cell(4)).to be_within(0.01).of(3.80)
-      expect(subject.cell(5)).to be_within(0.01).of(3.81)
-      expect(subject.cell(6)).to be_within(0.01).of(3.81)
-      expect(subject.cell(7)).to be_within(0.01).of(3.81)
-      expect(subject.cell(8)).to be_within(0.01).of(3.80)
-      expect(subject.cell(9)).to be_within(0.01).of(3.81)
+      expect(subject.cell_voltage(0)).to be_within(0.01).of(3.81)
+      expect(subject.cell_voltage(1)).to be_within(0.01).of(3.80)
+      expect(subject.cell_voltage(2)).to be_within(0.01).of(3.81)
+      expect(subject.cell_voltage(3)).to be_within(0.01).of(3.81)
+      expect(subject.cell_voltage(4)).to be_within(0.01).of(3.80)
+      expect(subject.cell_voltage(5)).to be_within(0.01).of(3.81)
+      expect(subject.cell_voltage(6)).to be_within(0.01).of(3.81)
+      expect(subject.cell_voltage(7)).to be_within(0.01).of(3.81)
+      expect(subject.cell_voltage(8)).to be_within(0.01).of(3.80)
+      expect(subject.cell_voltage(9)).to be_within(0.01).of(3.81)
     end
 
   end
@@ -105,11 +120,16 @@ describe ICharger::Log::Row do
 
     its(:capacity) { should be_within(0.1).of(1.5) }
 
+    it 'should have internal temperatures' do
+      expect(subject.internal_temperature(:c)).to be_within(0.1).of(38.0)
+      expect(subject.internal_temperature(:f)).to be_within(0.1).of(100.4)
+    end
+
     its(:cell_count) { should eql(2) }
 
     it 'should have known cell voltages' do
-      expect(subject.cell(0)).to be_within(0.01).of(3.81)
-      expect(subject.cell(1)).to be_within(0.01).of(3.81)
+      expect(subject.cell_voltage(0)).to be_within(0.01).of(3.81)
+      expect(subject.cell_voltage(1)).to be_within(0.01).of(3.81)
     end
 
   end
