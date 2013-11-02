@@ -20,7 +20,9 @@ module ICharger
         }.fetch(@fields[1].to_i, 'unknown')
       end
 
-      # XXX figure out time unit
+      # Gets the time in milliseconds.
+      #
+      # @return [Number] time stamp, in milliseconds
       def time
         @fields[2].to_i
       end
@@ -54,14 +56,25 @@ module ICharger
         @fields[7].to_i / 1000.0
       end
 
-      # XXX mAh charged?
-      def field8
-        @fields[8]
+      # Capacity stored or removed so far, in amp-hours.
+      #
+      # @return amp-hours stored (+) or removed (-)
+      def capacity
+        @fields[8].to_i / 100.0
       end
 
-      # XXX internal temperature / 10.0?
-      def field9
-        @fields[9]
+      # Internal temperature sensor value, in celsius or fahrenheit.
+      #
+      # @param unit :c or :f for celsius or fahrenheit
+      # @return [Float]
+      def internal_temperature(unit = :c)
+        @temperature ||= @fields[9].to_i
+        case unit
+        when :f
+          (@temperature * (9.0 / 5.0)) + 32
+        else
+          @temperature
+        end
       end
 
       # XXX always seems to be 0, external temp. sensor?
