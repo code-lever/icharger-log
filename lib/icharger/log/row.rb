@@ -51,8 +51,10 @@ module ICharger
         @fields[6].to_i / 1000.0
       end
 
-      # XXX voltage measured?
-      def field7
+      # Total battery pack voltage, in volts.
+      #
+      # @return [Float] battery pack voltage (V)
+      def pack_voltage
         @fields[7].to_i / 1000.0
       end
 

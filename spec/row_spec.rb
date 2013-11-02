@@ -16,6 +16,8 @@ describe ICharger::Log::Row do
 
     its(:input_voltage) { should be_within(0.1).of(23.75) }
 
+    its(:pack_voltage) { should be_within(0.1).of(22.75) }
+
     its(:capacity) { should be_within(0.1).of(0.1) }
 
     it 'should have internal temperatures' do
@@ -48,6 +50,8 @@ describe ICharger::Log::Row do
 
     its(:input_voltage) { should be_within(0.1).of(23.84) }
 
+    its(:pack_voltage) { should be_within(0.1).of(22.85) }
+
     its(:capacity) { should be_within(0.1).of(0.0) }
 
     it 'should have internal temperatures' do
@@ -79,6 +83,8 @@ describe ICharger::Log::Row do
     its(:current) { should be_within(0.1).of(3.97) }
 
     its(:input_voltage) { should be_within(0.1).of(23.76) }
+
+    its(:pack_voltage) { should be_within(0.1).of(22.85) }
 
     its(:capacity) { should be_within(0.1).of(-6.01) }
 
@@ -117,6 +123,8 @@ describe ICharger::Log::Row do
     its(:current) { should be_within(0.1).of(4.02) }
 
     its(:input_voltage) { should be_within(0.1).of(23.84) }
+
+    its(:pack_voltage) { should be_within(0.1).of(22.85) }
 
     its(:capacity) { should be_within(0.1).of(1.5) }
 
