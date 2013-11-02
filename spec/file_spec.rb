@@ -43,7 +43,7 @@ describe ICharger::Log::File do
 
     it 'should be true for valid files' do
       files = data_files
-      files.should have(2).files
+      files.should have(3).files
 
       files.each do |f|
         expect(ICharger::Log::File.icharger?(f)).to be_true

@@ -23,6 +23,8 @@ describe ICharger::Log::Row do
       expect(subject.cell(5)).to be_within(0.01).of(3.79)
     end
 
+    its(:state) { should eql('charging') }
+
   end
 
   context 'channel 2, 6 cells' do
@@ -44,11 +46,13 @@ describe ICharger::Log::Row do
       expect(subject.cell(5)).to be_within(0.01).of(3.81)
     end
 
+    its(:state) { should eql('charging') }
+
   end
 
   context 'channel 1, 10 cells' do
 
-    let(:data) { '$1;1;106000;1;0;397;23840;22853;0;380;0;3810;3807;3813;3811;3806;3812;3811;3814;3809;3812;40' }
+    let(:data) { '$1;2;106000;1;0;397;23840;22853;0;380;0;3810;3807;3813;3811;3806;3812;3811;3814;3809;3812;40' }
 
     its(:channel) { should eql(1) }
 
@@ -69,6 +73,8 @@ describe ICharger::Log::Row do
       expect(subject.cell(9)).to be_within(0.01).of(3.81)
     end
 
+    its(:state) { should eql('discharging') }
+
   end
 
   context 'channel 2, 2 cells' do
@@ -85,6 +91,8 @@ describe ICharger::Log::Row do
       expect(subject.cell(0)).to be_within(0.01).of(3.81)
       expect(subject.cell(1)).to be_within(0.01).of(3.81)
     end
+
+    its(:state) { should eql('charging') }
 
   end
 

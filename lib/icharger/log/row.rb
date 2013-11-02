@@ -12,9 +12,12 @@ module ICharger
         /(?<ch>\d)/.match(@fields[0])[:ch].to_i
       end
 
-      # XXX state of some kind?
-      def field1
-        @fields[1]
+      # this is a guess...
+      def state
+        {
+          1 => 'charging',
+          2 => 'discharging'
+        }.fetch(@fields[1].to_i, 'unknown')
       end
 
       # XXX figure out time unit
