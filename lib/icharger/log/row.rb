@@ -66,7 +66,7 @@ module ICharger
       # Internal temperature sensor value, in celsius or fahrenheit.
       #
       # @param unit :c or :f for celsius or fahrenheit
-      # @return [Float] temperature
+      # @return [Float] temperature in requested unit
       def internal_temperature(unit = :c)
         @internal_temperature ||= (@fields[9].to_i / 10.0)
         convert_temperature(@internal_temperature, unit)
@@ -75,12 +75,17 @@ module ICharger
       # External temperature sensor value, in celsius or fahrenheit.
       #
       # @param unit :c or :f for celsius or fahrenheit
-      # @return [Float] temperature
-      def field10
+      # @return [Float] temperature in requested unit
+      def external_temperature(unit = :c)
         @external_temperature ||= (@fields[10].to_i / 10.0)
         convert_temperature(@external_temperature, unit)
       end
 
+      # Individual cell voltage, in volts.
+      #
+      # @param index index of the cell (0-based)
+      # @return [Float] input power supply (V)
+      # @see #cell_count
       def cell_voltage(index)
         @fields[11 + index].to_i / 1000.0
       end
