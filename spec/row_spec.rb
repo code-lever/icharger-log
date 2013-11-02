@@ -10,7 +10,7 @@ describe ICharger::Log::Row do
 
     its(:channel) { should eql(1) }
 
-    its(:state) { should eql('charging') }
+    its(:state) { should eql(:charging) }
 
     its(:current) { should be_within(0.01).of(-0.53) }
 
@@ -44,7 +44,7 @@ describe ICharger::Log::Row do
 
     its(:channel) { should eql(2) }
 
-    its(:state) { should eql('charging') }
+    its(:state) { should eql(:charging) }
 
     its(:current) { should be_within(0.01).of(0.41) }
 
@@ -78,7 +78,7 @@ describe ICharger::Log::Row do
 
     its(:channel) { should eql(1) }
 
-    its(:state) { should eql('discharging') }
+    its(:state) { should eql(:discharging) }
 
     its(:current) { should be_within(0.1).of(3.97) }
 
@@ -116,7 +116,7 @@ describe ICharger::Log::Row do
 
     its(:channel) { should eql(2) }
 
-    its(:state) { should eql('charging') }
+    its(:state) { should eql(:charging) }
 
     its(:time) { should eql(87000) }
 
