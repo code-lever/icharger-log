@@ -30,6 +30,20 @@ describe ICharger::Log::File do
 
   end
 
+  context 'data file LiPo[Storage_965_CH2].txt' do
+
+    before(:all) { @file = ICharger::Log::File.new(data_file('LiPo[Storage_965_CH2].txt')) }
+
+    subject { @file }
+
+    it { should have(868).rows }
+
+    its(:channel) { should eql(2) }
+
+    its(:duration) { should be_within(0.1).of(86.7) }
+
+  end
+
   describe '#icharger?' do
 
     it 'should be false for invalid or missing files' do
