@@ -14,6 +14,8 @@ describe ICharger::Log::Row do
 
     its(:current) { should be_within(0.01).of(-0.53) }
 
+    its(:input_voltage) { should be_within(0.1).of(23.75) }
+
     its(:cell_count) { should eql(6) }
 
     it 'should have known cell voltages' do
@@ -37,6 +39,8 @@ describe ICharger::Log::Row do
 
     its(:current) { should be_within(0.01).of(0.41) }
 
+    its(:input_voltage) { should be_within(0.1).of(23.84) }
+
     its(:cell_count) { should eql(6) }
 
     it 'should have known cell voltages' do
@@ -52,13 +56,15 @@ describe ICharger::Log::Row do
 
   context 'channel 1, 10 cells' do
 
-    let(:data) { '$1;2;106000;1;0;397;23840;22853;0;380;0;3810;3807;3813;3811;3806;3812;3811;3814;3809;3812;40' }
+    let(:data) { '$1;2;106000;1;0;397;23760;22853;0;380;0;3810;3807;3813;3811;3806;3812;3811;3814;3809;3812;40' }
 
     its(:channel) { should eql(1) }
 
     its(:state) { should eql('discharging') }
 
     its(:current) { should be_within(0.1).of(3.97) }
+
+    its(:input_voltage) { should be_within(0.1).of(23.76) }
 
     its(:cell_count) { should eql(10) }
 
@@ -88,6 +94,8 @@ describe ICharger::Log::Row do
     its(:time) { should eql(87000) }
 
     its(:current) { should be_within(0.1).of(4.02) }
+
+    its(:input_voltage) { should be_within(0.1).of(23.84) }
 
     its(:cell_count) { should eql(2) }
 

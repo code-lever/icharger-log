@@ -27,21 +27,25 @@ module ICharger
 
       # XXX always seems to be 1
       def field3
-        @fields[3]
+        @fields[3].to_i
       end
 
       # XXX always seems to be 0
       def field4
-        @fields[4]
+        @fields[4].to_i
       end
 
-      # XXX VERIFY
+      # Instantaneous charge (+) or discharge (-) current, in amps.
+      #
+      # @return [Float] instantaneous current (A)
       def current
         @fields[5].to_i / 100.0
       end
 
-      # XXX voltage input?
-      def field6
+      # Input power supply voltage, in volts.
+      #
+      # @return [Float] input power supply (V)
+      def input_voltage
         @fields[6].to_i / 1000.0
       end
 
