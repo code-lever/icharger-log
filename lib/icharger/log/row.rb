@@ -96,6 +96,10 @@ module ICharger
         @fields[11 + index].to_i / 1000.0
       end
 
+      # Gets the number of individual cells measured.
+      #
+      # @return [Number] number of individual cells
+      # @see #cell_voltage
       def cell_count
         @fields[11..20].reject{ |v| v.to_i == 0 }.length
       end

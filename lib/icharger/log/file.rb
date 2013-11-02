@@ -24,10 +24,16 @@ module ICharger
         raise ArgumentError, "File does not appear to be an iCharger log (#{e})"
       end
 
+      # Gets the charger channel number.
+      #
+      # @return [Number] charger channel number
       def channel
         @rows.first.channel
       end
 
+      # Gets the duration of the log, in seconds.
+      #
+      # @return [Float] duration of the log, in seconds
       def duration
         @rows.last.time / 10000.0
       end
