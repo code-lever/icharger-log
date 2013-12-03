@@ -71,12 +71,20 @@ module ICharger
         @fields[8].to_i / 100.0
       end
 
+      def internal_temperature?
+        0 != internal_temperature
+      end
+
       # Gets the internal temperature sensor value, in celsius or fahrenheit.
       #
       # @param unit :c or :f for celsius or fahrenheit
       # @return [Float] temperature in requested unit
       def internal_temperature(unit = :c)
         convert_temperature((@fields[9].to_i / 10.0), unit)
+      end
+
+      def external_temperature?
+        0 != external_temperature
       end
 
       # Gets the external temperature sensor value, in celsius or fahrenheit.

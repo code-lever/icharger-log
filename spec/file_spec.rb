@@ -14,6 +14,39 @@ describe ICharger::Log::File do
 
     its(:duration) { should be_within(0.1).of(44.6) }
 
+    it { should have(447).milliseconds }
+
+    it { should have(447).currents }
+
+    it { should have(447).input_voltages }
+
+    it { should have(447).pack_voltages }
+
+    it { should have(447).capacities }
+
+    its(:internal_temperatures?) { should be_true }
+
+    it { should have(447).internal_temperatures }
+
+    its(:external_temperatures?) { should be_false }
+
+    its(:cell_count) { should eql(6) }
+
+    it 'should have select cell voltages' do
+      expect(subject.cell_voltages(0)[0]).to be_within(0.01).of(3.79)
+      expect(subject.cell_voltages(1)[0]).to be_within(0.01).of(3.79)
+      expect(subject.cell_voltages(2)[0]).to be_within(0.01).of(3.79)
+      expect(subject.cell_voltages(3)[0]).to be_within(0.01).of(3.79)
+      expect(subject.cell_voltages(4)[0]).to be_within(0.01).of(3.79)
+      expect(subject.cell_voltages(5)[0]).to be_within(0.01).of(3.79)
+      expect(subject.cell_voltages(0)[50]).to be_within(0.01).of(3.84)
+      expect(subject.cell_voltages(1)[50]).to be_within(0.01).of(3.84)
+      expect(subject.cell_voltages(2)[50]).to be_within(0.01).of(3.84)
+      expect(subject.cell_voltages(3)[50]).to be_within(0.01).of(3.84)
+      expect(subject.cell_voltages(4)[50]).to be_within(0.01).of(3.84)
+      expect(subject.cell_voltages(5)[50]).to be_within(0.01).of(3.84)
+    end
+
   end
 
   context 'data file LiPo[Storage_953_CH2].txt' do

@@ -38,6 +38,50 @@ module ICharger
         @rows.last.time / 10000.0
       end
 
+      def milliseconds
+        @rows.map(&:time)
+      end
+
+      def currents
+        @rows.map(&:current)
+      end
+
+      def input_voltages
+        @rows.map(&:input_voltage)
+      end
+
+      def pack_voltages
+        @rows.map(&:pack_voltage)
+      end
+
+      def capacities
+        @rows.map(&:capacity)
+      end
+
+      def internal_temperatures?
+        @rows.map(&:internal_temperature?).any? { |t| t }
+      end
+
+      def internal_temperatures(unit = :c)
+        @rows.each_with_object(unit).map(&:internal_temperature)
+      end
+
+      def external_temperatures?
+        @rows.map(&:external_temperature?).any? { |t| t }
+      end
+
+      def external_temperatures(unit = :c)
+        @rows.each_with_object(unit).map(&:internal_temperature)
+      end
+
+      def cell_voltages(index)
+        @rows.each_with_object(index).map(&:cell_voltage)
+      end
+
+      def cell_count
+        @rows.map(&:cell_count).max
+      end
+
     end
 
   end
