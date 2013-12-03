@@ -32,6 +32,15 @@ describe ICharger::Log::File do
 
     its(:cell_count) { should eql(6) }
 
+    it 'should have correct cell voltages count' do
+      expect(subject.cell_voltages(0)).to have(447).items
+      expect(subject.cell_voltages(1)).to have(447).items
+      expect(subject.cell_voltages(2)).to have(447).items
+      expect(subject.cell_voltages(3)).to have(447).items
+      expect(subject.cell_voltages(4)).to have(447).items
+      expect(subject.cell_voltages(5)).to have(447).items
+    end
+
     it 'should have select cell voltages' do
       expect(subject.cell_voltages(0)[0]).to be_within(0.01).of(3.79)
       expect(subject.cell_voltages(1)[0]).to be_within(0.01).of(3.79)
