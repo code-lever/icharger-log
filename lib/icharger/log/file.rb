@@ -19,7 +19,7 @@ module ICharger
         open(uri, 'r') do |file|
           @rows = file.readlines.map { |row| ICharger::Log::Row.new(row) }
         end
-        raise ArgumentError, "No records found in file" if @rows.empty?
+        raise ArgumentError, 'No records found in file' if @rows.empty?
       rescue => e
         raise ArgumentError, "File does not appear to be an iCharger log (#{e})"
       end
