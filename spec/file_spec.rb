@@ -24,11 +24,11 @@ describe ICharger::Log::File do
 
     it { should have(447).capacities }
 
-    its(:internal_temperatures?) { should be_true }
+    its(:internal_temperatures?) { should be true }
 
     it { should have(447).internal_temperatures }
 
-    its(:external_temperatures?) { should be_false }
+    its(:external_temperatures?) { should be false }
 
     its(:cell_count) { should eql(6) }
 
@@ -93,7 +93,7 @@ describe ICharger::Log::File do
       files.should have(2).files
 
       files.each do |f|
-        expect(ICharger::Log::File.icharger?(f)).to be_false
+        expect(ICharger::Log::File.icharger?(f)).to be_falsey
       end
     end
 
@@ -102,7 +102,7 @@ describe ICharger::Log::File do
       files.should have(3).files
 
       files.each do |f|
-        expect(ICharger::Log::File.icharger?(f)).to be_true
+        expect(ICharger::Log::File.icharger?(f)).to be_truthy
       end
     end
 
