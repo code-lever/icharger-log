@@ -8,25 +8,25 @@ describe ICharger::Log::File do
 
     subject { @file }
 
-    it { should have(447).rows }
+    it { is_expected.to have(447).rows }
 
     its(:channel) { should eql(1) }
 
     its(:duration) { should be_within(0.1).of(44.6) }
 
-    it { should have(447).milliseconds }
+    it { is_expected.to have(447).milliseconds }
 
-    it { should have(447).currents }
+    it { is_expected.to have(447).currents }
 
-    it { should have(447).input_voltages }
+    it { is_expected.to have(447).input_voltages }
 
-    it { should have(447).pack_voltages }
+    it { is_expected.to have(447).pack_voltages }
 
-    it { should have(447).capacities }
+    it { is_expected.to have(447).capacities }
 
     its(:internal_temperatures?) { should be true }
 
-    it { should have(447).internal_temperatures }
+    it { is_expected.to have(447).internal_temperatures }
 
     its(:external_temperatures?) { should be false }
 
@@ -64,7 +64,7 @@ describe ICharger::Log::File do
 
     subject { @file }
 
-    it { should have(629).rows }
+    it { is_expected.to have(629).rows }
 
     its(:channel) { should eql(2) }
 
@@ -78,7 +78,7 @@ describe ICharger::Log::File do
 
     subject { @file }
 
-    it { should have(868).rows }
+    it { is_expected.to have(868).rows }
 
     its(:channel) { should eql(2) }
 
@@ -90,7 +90,7 @@ describe ICharger::Log::File do
 
     it 'should be false for invalid or missing files' do
       files = invalid_data_files
-      files.should have(2).files
+      expect(files).to have(2).files
 
       files.each do |f|
         expect(ICharger::Log::File.icharger?(f)).to be_falsey
@@ -99,7 +99,7 @@ describe ICharger::Log::File do
 
     it 'should be true for valid files' do
       files = data_files
-      files.should have(3).files
+      expect(files).to have(3).files
 
       files.each do |f|
         expect(ICharger::Log::File.icharger?(f)).to be_truthy
