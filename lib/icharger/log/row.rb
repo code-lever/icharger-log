@@ -109,7 +109,7 @@ module ICharger
       # @return [Number] number of individual cells
       # @see #cell_voltage
       def cell_count
-        @fields[11..20].reject{ |v| v.to_i == 0 }.length
+        @fields[11..20].count { |v| v.to_i.nonzero? }
       end
 
       def field21
